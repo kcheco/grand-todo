@@ -19,3 +19,5 @@ use Illuminate\Http\Request;
 // })->middleware('auth:api');
 
 Route::get('/todos', 'TodosController@getAllTodos');
+
+Route::post('/todos', 'TodosController@postNewTodo');

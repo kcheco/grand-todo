@@ -20,7 +20,15 @@ class Todo extends Model
      * @var array
      */
     protected $fillable = [
-    	'task', 
-    	'completed',
+    	'task'
+    ];
+
+    protected $attributes = [
+        'completed' => false
+    ];
+
+    protected $rules = [
+        'task' => 'required|max:255',
+        'completed' => 'boolean'
     ];
 }
