@@ -26,9 +26,4 @@ class Todo extends Model
     protected $attributes = [
         'completed' => false
     ];
-
-    protected $rules = [
-        'task' => 'required|max:255',
-        'completed' => 'boolean'
-    ];
 }

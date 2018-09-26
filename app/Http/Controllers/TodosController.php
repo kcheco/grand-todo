@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Http\Requests\TodoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -27,16 +28,13 @@ class TodosController extends Controller
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function postNewTodo(Request $request)
+    public function postNewTodo(TodoRequest $request)
     {
     	$params = $this->todoParams($request);
     	$todo = new Todo($params);
 
-    	if ($todo->save()) {
-            return response($todo->toJson(), Response::HTTP_CREATED);
-        } else {
-            return response()->json(array('errors'=>'There appears to be an error saving the new task. Make sure you are providing the task you wish to track.'), Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
+    	$todo->save();
+        return response($todo->toJson(), Response::HTTP_CREATED);
     }
 
     
@@ -46,7 +44,7 @@ class TodosController extends Controller
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Request
      */
-    private function todoParams(Request $request) 
+    private function todoParams(TodoRequest $request) 
     {
     	return $request->only(['task', 'completed']);
     }
