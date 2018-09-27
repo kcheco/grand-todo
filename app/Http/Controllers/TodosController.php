@@ -10,11 +10,11 @@ use Illuminate\Http\Response;
 class TodosController extends Controller
 {
     
-	/**
-	 * Returns a list of all the Todos
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Returns a list of all the Todos
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getAllTodos()
     {
         $todos = Todo::all();
