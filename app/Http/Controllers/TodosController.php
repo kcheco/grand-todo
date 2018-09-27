@@ -25,27 +25,31 @@ class TodosController extends Controller
     /**
      * Creates a new Todo
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\TodoRequest $request
      * @return \Illuminate\Http\Response
      */
     public function postNewTodo(TodoRequest $request)
     {
-    	$params = $this->todoParams($request);
+    	$params = $request->all();
     	$todo = new Todo($params);
 
     	$todo->save();
         return response($todo->toJson(), Response::HTTP_CREATED);
     }
 
-    
     /**
-     * Whitelists attributes being passed through 
+     * Updates an existing Todo
      *
-     * @param \Illuminate\Http\Request
-     * @return \Illuminate\Http\Request
+     * @param \Illuminate\Http\Request $request
+     * @param String $id
+     * @return \Illuminate\Http\Response
      */
-    private function todoParams(TodoRequest $request) 
+    public function patchExistingTodo(Request $request, $id)
     {
-    	return $request->only(['task', 'completed']);
+        $params = $request->all();
+        $todo = Todo::find($id);
+
+        $todo->update($params);
+        return response($todo->toJson(), Response::HTTP_ACCEPTED);
     }
 }

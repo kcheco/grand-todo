@@ -21,3 +21,6 @@ use Illuminate\Http\Request;
 Route::get('/todos', 'TodosController@getAllTodos');
 
 Route::post('/todos', 'TodosController@postNewTodo');
+
+Route::put('/todos/{id}', 'TodosController@patchExistingTodo');
+Route::patch('/todos/{id}', 'TodosController@patchExistingTodo');

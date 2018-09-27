@@ -15,15 +15,30 @@ class Todo extends Model
 
 
     /**
-     * The attributes that are mass assignable
+     * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-    	'task'
+    	'task', 'completed'
     ];
 
-    protected $attributes = [
+    /**
+     * The model attribute's original state.
+     *
+     * @var array
+     */
+    protected $original = [
         'completed' => false
+    ];
+
+    
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'completed' => 'boolean'
     ];
 }
