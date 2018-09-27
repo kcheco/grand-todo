@@ -26,3 +26,5 @@ Route::put('/todos/{id}', 'TodosController@patchExistingTodo');
 Route::patch('/todos/{id}', 'TodosController@patchExistingTodo');
 
 Route::get('/todos/{id}', 'TodosController@getTodo');
+
+Route::delete('/todos/{id}', 'TodosController@deleteTodo');

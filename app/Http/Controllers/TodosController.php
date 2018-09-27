@@ -19,7 +19,7 @@ class TodosController extends Controller
     {
         $todos = Todo::all();
 
-        return response($todos->toJson());
+        return response($todos->toJson(), Response::HTTP_OK);
     }
 
     /**
@@ -49,6 +49,13 @@ class TodosController extends Controller
         $params = $request->all();
         $todo = Todo::find($id);
 
+        // when record does not exist then return error
+        if (!$todo) {
+            return response()->json([
+                'error' => "Unable to update task. The record with the key {$id} does not exist."
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         $todo->update($params);
         return response($todo->toJson(), Response::HTTP_ACCEPTED);
     }
@@ -66,10 +73,33 @@ class TodosController extends Controller
         // when record does not exist then return error
         if (!$todo) {
             return response()->json([
-                'error' => "The record with the key {$id} does not exist."
+                'error' => "Unable to display task. The record with the key {$id} does not exist."
             ], Response::HTTP_NOT_FOUND);
         }
 
-        return response($todo->toJson());
+        return response($todo->toJson(), Response::HTTP_OK);
+    }
+
+    /**
+     * Delete a specific Todo
+     *
+     * @param String $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteTodo($id)
+    {
+        $todo = Todo::find($id);
+
+        // when record does not exist then return error
+        if (!$todo) {
+            return response()->json([
+                'error' => "Unable to delete task. The record with the key {$id} does not exist."
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        $todo->delete();
+        return response()->json([
+            'deleted' => true
+        ], Response::HTTP_OK);
     }
 }
