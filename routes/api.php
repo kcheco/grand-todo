@@ -24,3 +24,5 @@ Route::post('/todos', 'TodosController@postNewTodo');
 
 Route::put('/todos/{id}', 'TodosController@patchExistingTodo');
 Route::patch('/todos/{id}', 'TodosController@patchExistingTodo');
+
+Route::get('/todos/{id}', 'TodosController@getTodo');

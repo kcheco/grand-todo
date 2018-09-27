@@ -52,4 +52,24 @@ class TodosController extends Controller
         $todo->update($params);
         return response($todo->toJson(), Response::HTTP_ACCEPTED);
     }
+
+    /**
+     * Show a specific Todo
+     *
+     * @param String $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getTodo($id)
+    {
+        $todo = Todo::find($id);
+
+        // when record does not exist then return error
+        if (!$todo) {
+            return response()->json([
+                'error' => "The record with the key {$id} does not exist."
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        return response($todo->toJson());
+    }
 }
