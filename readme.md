@@ -12,7 +12,8 @@ I assuming you have composer installed on your local machine. If not please read
 5. Run "php artisan migrate" in console to initialize and add tables for storing ToDo data
 in sqlite database. For the purposes of this test and it being a new install on your machine, when prompted about running command while app is in production, type yes.
 6. Run "php artisan serve" to start up application server.
-7. Open browser or use Postman API to use the API endpoints below.
+7. Use Postman API or curl commands to use the API endpoints below.
+8. To terminate application server press CTRL and C (letter c) on your keyboard.
 
 ENJOY!
 
