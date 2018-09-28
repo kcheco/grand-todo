@@ -10,7 +10,7 @@ I assuming you have composer installed on your local machine. If not please read
 ## API Enpoints
 You may use the following endpoints access the ToDo resource as well as an integration with [OpenWeatherMap's API](https://openweathermap.org/).
 
-Get all ToDos
+#### *Get all ToDos*
 ```
 http_method: GET 
 URI: http://localhost{PORT}/api/todos/
@@ -19,9 +19,10 @@ Response:
  - ToDo json for a list of exisiting ToDos. HTTP Status Code 200.
 ```
 
-Get a ToDo
+#### *Get a ToDo*
 ```
-GET http://localhost{PORT}/api/todos/{id}
+http_method: GET 
+URI: http://localhost{PORT}/api/todos/{id}
 
 Parameters: 
  - id: the ID of the ToDo
@@ -30,7 +31,7 @@ Response:
  - ToDo json for specific ToDo. HTTP Status Code 200.
 ```
 
-Create a ToDo
+#### *Create a ToDo*
 ```
 http_method: POST 
 URI: http://localhost{PORT}/api/todos/
@@ -41,10 +42,11 @@ Parameters:
 
 Response:
  - ToDo json for newly created ToDo. HTTP Status Code 201.
- - Error when ToDo is not found the HTTP Status Code is 404. When parameters fail validation the HTTP status code is 422.
+ - Error when ToDo is not found the HTTP Status Code is 404. When parameters fail validation
+ the HTTP status code is 422.
 ```
 
-Update a ToDo
+#### *Update a ToDo*
 ```
 http_method: PUT/PATCH 
 URI: http://localhost{PORT}/api/todos/{id}
@@ -56,10 +58,11 @@ Parameters:
 
 Response:
  - ToDo json for updated ToDo. HTTP Status Code 202
- - Error when ToDo is not found the HTTP Status Code is 404. When parameters fail validation the HTTP status code is 422.
+ - Error when ToDo is not found the HTTP Status Code is 404. When parameters fail validation
+ the HTTP status code is 422.
 ```
 
-Delete a ToDo
+#### *Delete a ToDo*
 ```
 http_method: DELETE
 URI: http://localhost{PORT}/api/todos/{id}
@@ -72,7 +75,7 @@ Response:
  - Error when ToDo is not found the HTTP Status Code is 404.
 ```
 
-Get the Current Weather for your zipcode
+#### *Get the Current Weather for your zipcode*
 ```
 http_method: POST
 URI: http://localhost{PORT}/api/current_weather/
