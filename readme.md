@@ -110,4 +110,4 @@ php artisan request_log
 *Not implemented yet.*
 
 ## Miscellaneous
-HTTP Status Code 418 means I AM A TEAPOT.
+Did you know HTTP Status Code 418 means I AM A TEAPOT? Check out [Symfony Response docs](https://github.com/symfony/http-foundation/blob/master/Response.php) which is part of the Laravel Framework.
