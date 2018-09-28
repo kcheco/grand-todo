@@ -5,7 +5,17 @@ This is a standard todo application using Laravel 5.3.30
 ## Cloning Repo
 I assuming you have composer installed on your local machine. If not please read [Laravel Installation guide](https://laravel.com/docs/5.3/installation) or go to [composer](https://getcomposer.org/). After cloning, complete the following: 
 
-*Stay tuned. I've got you covered.*
+1. Create a .env file and add a OPEN_WEATHER_KEY environment variable. You will need to obtain an API key from [Open Weather Map API](https://openweathermap.org/).
+2. In the same .env file, add a DB_CONNECTION environment variable and set it sqlite.
+3. Also, add a DB_DATABASE environment variable and set it to absolute path where the database.sqlite file will be stored. It will normally be created and stored in database directory of the Laravel application. (i.e. "C:\xampp\htdocs\grand-todo\database\database.sqlite")
+4. Run "composer update" in console to install Laravel framework and dependpencies.
+5. Run "php artisan migrate" in console to initialize and add tables for storing ToDo data
+in sqlite database. For the purposes of this test and it being a new install on your machine, when prompted about running command while app is in production, type yes.
+6. Run "php artisan serve" to start up application server.
+7. Open browser or use Postman API to use the API endpoints below.
+
+ENJOY!
+
 
 ## API Enpoints
 You may use the following endpoints access the ToDo resource as well as an integration with [OpenWeatherMap's API](https://openweathermap.org/).
@@ -91,7 +101,7 @@ Response:
 ## Request Logging
 Each request is being logged. To access log data, you can call the following command on your console.
 ```
-php artisan request_logs
+php artisan request_log
 ```
 
 ## Testing
