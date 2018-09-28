@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TodosController;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,15 @@ use Illuminate\Http\Request;
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:api');
+
+Route::get('/request_log', function (Request $request, Response $response)
+{
+    return [
+    	'http_status_code' => $response->getStatusCode(),
+    	'request_method' => $request->method(),
+    	'route' => $request->path()
+    ];
+});
 
 Route::get('/todos', 'TodosController@getAllTodos');
 
