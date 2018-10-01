@@ -44,7 +44,7 @@
             "php artisan optimize"
         ],
         "test": [
-            "vendor/bin/phpunit"
+            "vendor\\bin\\phpunit"
         ]
     },
     "config": {
