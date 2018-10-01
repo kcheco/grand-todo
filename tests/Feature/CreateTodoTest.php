@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  *
  *
  */
-class CreateTodo extends TestCase
+class CreateTodoTest extends TestCase
 {
 	use WithoutMiddleware;
 
@@ -26,7 +26,7 @@ class CreateTodo extends TestCase
      *
      * @return void
      */
-    public function testiCanCreateATodo()
+    public function testICanCreateATodo()
     {
         $this->givenIWantToCreateATodo();
         $this->whenICreateTheTodoWithATask();
@@ -46,9 +46,9 @@ class CreateTodo extends TestCase
      *
      * @return void
      */
-    private function givenIWantToCreateATodo
+    private function givenIWantToCreateATodo()
     {
-    	$this->payload = factory(App\Todo::class)->make();
+    	$this->payload = factory(App\Models\Todo::class)->make();
     }
 
     
@@ -59,7 +59,7 @@ class CreateTodo extends TestCase
      */
     private function whenICreateTheTodoWithATask()
     {
-    	$this->response = $this->json('POST', '/api/todos/', $this->payload);
+    	$this->response = $this->json('POST', '/api/todos/', $this->payload->toArray());
     }
 
     /** 
