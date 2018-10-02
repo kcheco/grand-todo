@@ -5,15 +5,23 @@ This is a standard todo application using Laravel 5.3.30
 ## Cloning Repo
 I assuming you have composer installed on your local machine. If not please read [Laravel Installation guide](https://laravel.com/docs/5.3/installation) or go to [composer](https://getcomposer.org/). After cloning, complete the following: 
 
-1. Create a .env file on the root directory of the project and add a OPEN_WEATHER_KEY environment variable. You will need to obtain an API key from [Open Weather Map API](https://openweathermap.org/).
-2. In the same .env file, add a DB_CONNECTION environment variable and set it sqlite.
-3. Also, add a DB_DATABASE environment variable and set it to absolute path where the database.sqlite file will be stored. It will normally be created and stored in database directory of the Laravel application. (i.e. "C:\xampp\htdocs\grand-todo\database\database.sqlite")
+1. Create a .env file on the root directory of the project and add the following:
+```
+APP_ENV=local
+APP_DEBUG=true
+DB_CONNECTION=sqlite
+DB_DATBASE=
+APP_KEY=
+```
+2. Add a OPEN_WEATHER_KEY environment variable. You will need to obtain an API key from [Open Weather Map API](https://openweathermap.org/).
+3. Also, edit the DB_DATABASE environment variable and set it to absolute path where the database.sqlite file will be stored. It will normally be created and stored in database directory of the Laravel application (i.e. "C:\xampp\htdocs\grand-todo\database\database.sqlite"). If you dont have a database.sqlite file in the database folder of the project, go ahead and add it.
 4. Run "composer update" in console to install Laravel framework and dependpencies.
 5. Run "php artisan migrate" in console to initialize and add tables for storing ToDo data
-in sqlite database. For the purposes of this test and it being a new install on your machine, when prompted about running command while app is in production, type yes.
-6. Run "php artisan serve" to start up application server.
-7. Use Postman API or curl commands to use the API endpoints below.
-8. To terminate application server press CTRL and C (letter c) on your keyboard.
+in sqlite database.
+6. Run "php artisan generate:key" and add the generated key to the APP_KEY environment variable.
+7. Run "php artisan serve" to start up application server.
+8. Use Postman API or curl commands to use the API endpoints below.
+9. To terminate application server press CTRL and C (letter c) on your keyboard.
 
 ENJOY!
 
