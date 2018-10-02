@@ -10,7 +10,7 @@ I assuming you have composer installed on your local machine. If not please read
 APP_ENV=local
 APP_DEBUG=true
 DB_CONNECTION=sqlite
-DB_DATBASE=
+DB_DATABASE=
 APP_KEY=
 ```
 2. Add a OPEN_WEATHER_KEY environment variable. You will need to obtain an API key from [Open Weather Map API](https://openweathermap.org/).
