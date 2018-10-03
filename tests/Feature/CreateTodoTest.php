@@ -14,6 +14,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class CreateTodoTest extends TestCase
 {
 	use WithoutMiddleware;
+	use DatabaseMigrations;
 
 	/* the data being passed through API call */
 	protected $payload;
@@ -22,7 +23,7 @@ class CreateTodoTest extends TestCase
 	protected $response;
 
     /**
-     * A basic test example.
+     * A test example for successfully creating a todo.
      *
      * @return void
      */
@@ -33,7 +34,12 @@ class CreateTodoTest extends TestCase
         $this->thenIShouldSeeTheSuccessfullyCreatedTodo();
     }
 
-    public function testiAmUnableToCreateATodo()
+		/**
+		 * A test example for creating a todo with no task value.
+		 *
+		 * @return void
+		 */
+		public function testiAmUnableToCreateATodo()
     {
     	$this->givenIWantToCreateATodo();
     	$this->whenICreateTheTodoWithoutATask();
@@ -41,28 +47,29 @@ class CreateTodoTest extends TestCase
     	$this->andIShouldSeeStatusCode422();
     }
 
-    /** 
+    /**
      * Given I want to create a todo.
      *
      * @return void
      */
     private function givenIWantToCreateATodo()
     {
-    	$this->payload = factory(App\Models\Todo::class)->make();
+			$model = factory(App\Models\Todo::class)->make();
+    	$this->payload = $model->toArray();
     }
 
-    
-    /** 
+
+    /**
      * When I create the Todo with a task.
      *
      * @return void
      */
     private function whenICreateTheTodoWithATask()
     {
-    	$this->response = $this->json('POST', '/api/todos/', $this->payload->toArray());
+    	$this->response = $this->json('POST', '/api/todos/', $this->payload);
     }
 
-    /** 
+    /**
      * Then I should see the successfully created Todo.
      *
      * @return void
@@ -70,36 +77,36 @@ class CreateTodoTest extends TestCase
     private function thenIShouldSeeTheSuccessfullyCreatedTodo()
     {
     	$this->response->assertStatus(201);
-    	$this->response->assertJsonFragment($this->payload);
+    	$this->response->assertJson($this->payload);
     }
 
-    /** 
+    /**
      * When I create the Todo with a task.
      *
      * @return void
      */
     private function whenICreateTheTodoWithoutATask()
     {
-    	$this->payload->task = '';
+    	$this->payload['task'] = '';
     	$this->response = $this->json('POST', '/api/todos/', $this->payload);
     }
 
     /**
-     * Then I should see an error message
+     * Then I should see an error message.
      *
      * @return void
      */
     private function thenIshouldSeeAnErrorMessage()
     {
     	$this->response->assertJsonStructure([
-    		'errors' => [ 
+    		'errors' => [
     			'task'
     		]
     	]);
     }
 
     /**
-     * and I should see status code 422
+     * and I should see status code 422.
      *
      * @return void
      */
