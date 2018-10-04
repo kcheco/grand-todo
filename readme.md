@@ -116,7 +116,9 @@ php artisan request_log
 ## Testing
 
 *Not fully implemented yet.*
+
 In console, run *composer test*.
+
 Feature
 - [x] creating a todo
 - [x] updating a todo
