@@ -3,7 +3,7 @@
 This is a standard todo application using Laravel 5.3.30
 
 ## Cloning Repo
-I assuming you have composer installed on your local machine. If not please read [Laravel Installation guide](https://laravel.com/docs/5.3/installation) or go to [composer](https://getcomposer.org/). After cloning, complete the following: 
+I assuming you have composer installed on your local machine. If not please read [Laravel Installation guide](https://laravel.com/docs/5.3/installation) or go to [composer](https://getcomposer.org/). After cloning, complete the following:
 
 1. Create a .env file on the root directory of the project and add the following:
 ```
@@ -31,7 +31,7 @@ You may use the following endpoints access the ToDo resource as well as an integ
 
 #### *Get all ToDos*
 ```
-http_method: GET 
+http_method: GET
 URI: http://localhost{PORT}/api/todos/
 
 Response:
@@ -40,10 +40,10 @@ Response:
 
 #### *Get a ToDo*
 ```
-http_method: GET 
+http_method: GET
 URI: http://localhost{PORT}/api/todos/{id}
 
-Parameters: 
+Parameters:
  - id: the ID of the ToDo
 
 Response:
@@ -52,10 +52,10 @@ Response:
 
 #### *Create a ToDo*
 ```
-http_method: POST 
+http_method: POST
 URI: http://localhost{PORT}/api/todos/
 
-Parameters: 
+Parameters:
  - task: the name of the task you are adding to you ToDo list.
  - completed (optional): indicate whether task has been completed. Default is false.
 
@@ -67,10 +67,10 @@ Response:
 
 #### *Update a ToDo*
 ```
-http_method: PUT/PATCH 
+http_method: PUT/PATCH
 URI: http://localhost{PORT}/api/todos/{id}
 
-Parameters: 
+Parameters:
  - id: the ID of the ToDo
  - task (optional): the name of the task you are adding to you ToDo list.
  - completed (optional): indicate whether task has been completed in true or false.
@@ -86,7 +86,7 @@ Response:
 http_method: DELETE
 URI: http://localhost{PORT}/api/todos/{id}
 
-Parameters: 
+Parameters:
  - id: the ID of the ToDo
 
 Response:
@@ -99,7 +99,7 @@ Response:
 http_method: POST
 URI: http://localhost{PORT}/api/current_weather/
 
-Parameters: 
+Parameters:
  - zipcode: the zipcode of location you would like to see current weather data for.
 
 Response:
@@ -115,7 +115,17 @@ php artisan request_log
 
 ## Testing
 
-*Not implemented yet.*
+*Not fully implemented yet.*
+In console, run *composer test*.
+Feature
+- [x] creating a todo
+- [x] updating a todo
+- [ ] viewing all todo
+- [ ] showing a todo
+- [ ] deleting a todo
+
+Unit
+- [ ] todo model
 
 ## Miscellaneous
 Did you know HTTP Status Code 418 means I AM A TEAPOT? Check out [Symfony Response docs](https://github.com/symfony/http-foundation/blob/master/Response.php) which is part of the Laravel Framework.
