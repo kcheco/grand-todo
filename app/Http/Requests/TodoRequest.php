@@ -24,8 +24,20 @@ class TodoRequest extends ApiRequest
     public function rules()
     {
         return [
-            'task' => 'required|max:150',
-            'completed' => 'boolean'
+            'task' => 'required_without_all|max:150',
+            'completed' => 'nullable|boolean'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'task.required_without_all' => 'A task is required'
         ];
     }
 }

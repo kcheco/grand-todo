@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 
 class TodosController extends Controller
 {
-    
+
     /**
      * Returns a list of all the Todos
      *
@@ -40,11 +40,11 @@ class TodosController extends Controller
     /**
      * Updates an existing Todo
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\TodoRequest $request
      * @param String $id
      * @return \Illuminate\Http\Response
      */
-    public function patchExistingTodo(Request $request, $id)
+    public function patchExistingTodo(TodoRequest $request, $id)
     {
         $params = $request->all();
         $todo = Todo::find($id);
